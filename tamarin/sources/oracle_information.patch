@@ -1,0 +1,76 @@
+diff --git a/lib/theory/src/Theory/Constraint/Solver/ProofMethod.hs b/lib/theory/src/Theory/Constraint/Solver/ProofMethod.hs
+index 3f2bba05..acaf0348 100644
+--- a/lib/theory/src/Theory/Constraint/Solver/ProofMethod.hs
++++ b/lib/theory/src/Theory/Constraint/Solver/ProofMethod.hs
+@@ -64,6 +64,7 @@ import           Theory.Constraint.Solver.Heuristics
+ import           Theory.Constraint.System
+ import           Theory.Model
+ import           Theory.Text.Pretty
++import           Text.PrettyPrint.Html
+ 
+ 
+ ------------------------------------------------------------------------------
+@@ -532,32 +533,7 @@ oracleRanking :: String
+               -> ProofContext
+               -> System
+               -> [AnnotatedGoal] -> [AnnotatedGoal]
+-oracleRanking oracleName ctxt _sys ags0
+---  | AvoidInduction == (L.get pcUseInduction ctxt) = ags0
+-  | otherwise =
+-    unsafePerformIO $ do
+-      let ags = goalNrRanking ags0
+-      let inp = unlines
+-                  (map (\(i,ag) -> show i ++": "++ (concat . lines . render $ pgoal ag))
+-                       (zip [(0::Int)..] ags))
+-      outp <- readProcess oracleName [ L.get pcLemmaName ctxt ] inp
+-      
+-      let indices = catMaybes . map readMay . lines $ outp
+-          ranked = catMaybes . map (atMay ags) $ indices
+-          remaining = filter (`notElem` ranked) ags
+-          logMsg =    ">>>>>>>>>>>>>>>>>>>>>>>> START INPUT\n"
+-                   ++ inp
+-                   ++ "\n>>>>>>>>>>>>>>>>>>>>>>>> START OUTPUT\n"
+-                   ++ outp
+-                   ++ "\n>>>>>>>>>>>>>>>>>>>>>>>> END Oracle call\n"
+-      guard $ trace logMsg True
+-      -- let sd = render $ vcat $ map prettyNode $ M.toList $ L.get sNodes sys
+-      -- guard $ trace sd True
+-
+-      return (ranked ++ remaining)
+-  where
+-    pgoal (g,(_nr,_usefulness)) = prettyGoal g
+-
++oracleRanking oracleName _ctxt _sys _ags0 = error "not implemented"
+ -- | A ranking function using an external oracle to allow user-definable
+ --   heuristics for each lemma separately, using the smartRanking heuristic
+ --   as the baseline.
+@@ -565,24 +541,20 @@ oracleSmartRanking :: String
+                    -> ProofContext
+                    -> System
+                    -> [AnnotatedGoal] -> [AnnotatedGoal]
+-oracleSmartRanking oracleName ctxt _sys ags0
++oracleSmartRanking oracleName ctxt sys ags0
+ --  | AvoidInduction == (L.get pcUseInduction ctxt) = ags0
+   | otherwise =
+     unsafePerformIO $ do
+-      let ags = smartRanking ctxt False _sys ags0
++      let ags = smartRanking ctxt False sys ags0
++      let sys_desc = render $ prettyNonGraphSystem sys
+       let inp = unlines
+-                  (map (\(i,ag) -> show i ++": "++ (concat . lines . render $ pgoal ag))
++                  ((map (\(i,ag) -> show i ++": "++ (concat . lines . render $ pgoal ag))
+                        (zip [(0::Int)..] ags))
++                       ++ (map (\line -> "system: " ++ line) (lines sys_desc)))
+       outp <- readProcess oracleName [ L.get pcLemmaName ctxt ] inp
+       let indices = catMaybes . map readMay . lines $ outp
+           ranked = catMaybes . map (atMay ags) $ indices
+           remaining = filter (`notElem` ranked) ags
+-          logMsg =    ">>>>>>>>>>>>>>>>>>>>>>>> START INPUT\n"
+-                   ++ inp
+-                   ++ "\n>>>>>>>>>>>>>>>>>>>>>>>> START OUTPUT\n"
+-                   ++ outp
+-                   ++ "\n>>>>>>>>>>>>>>>>>>>>>>>> END Oracle call\n"
+-      guard $ trace logMsg True
+       -- let sd = render $ vcat $ map prettyNode $ M.toList $ L.get sNodes sys
+       -- guard $ trace sd True
+ 
