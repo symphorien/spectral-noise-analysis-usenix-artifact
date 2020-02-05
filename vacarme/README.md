@@ -42,26 +42,6 @@ nix-shell
 ```
 Dependencies will be compiled and made available inside the shell (and only inside this one).
 
-#### Alternative Versions
-
-##### Noise without early encryption
-
-To generate case studies corresponding to the alternative version of Noise without early encryption, use the `vacarme/psk-no-early-encryption.tar` archive instead of the `vacarme/source.tar.bz2`mentioned above. 
-
-##### Noise with Curve25519
-
-1. Unpack the source archive as normal. 
-2. Edit `thesis/nix/shell.nix`:
- * Delete the line `tamarin-prover-oracle`
- * Replace it with `tamarin-prover-subgroup`
-3. Run `nix-shell` in `thesis/`
-4. Copy `thesis/helpers/oracle_C25519_K1X1.py` over `thesis/helpers/oracle.py`
-5. Run `make compile` in `thesis/` 
-6. Run `python3 subgroupify.py` in `framework`
-7. Copy `thesis/out_C25519/` over `thesis/out`
-8. Run `make report` to generate the results. (Use `SAMPLE=specs/NN` to avoid long computations). 
-
-TODO: CHECK these instructions are correct.
 
 #### Using vacarme
 To run the tool on NN (a simple handshake which should take less than a CPU hour):
@@ -87,3 +67,26 @@ To benefit of the associated speed bump, you need the Nix package manager.
 ```
 make LOCAL=0 SAMPLE=specs/NN report
 ```
+If possible, this is recommended.
+
+#### Alternative Versions
+
+##### Noise without early encryption
+
+To generate case studies corresponding to the alternative version of Noise without early encryption, use the `vacarme/psk-no-early-encryption.tar` archive instead of the `vacarme/source.tar.bz2`mentioned above. 
+
+##### Noise with Curve25519
+
+1. Unpack the source archive as normal. 
+2. Edit `thesis/nix/shell.nix`:
+ * Delete the line `tamarin-prover-oracle`
+ * Replace it with `tamarin-prover-subgroup`
+3. Run `nix-shell` in `thesis/`
+4. Copy `thesis/helpers/oracle_C25519_K1X1.py` over `thesis/helpers/oracle.py`
+5. Run `make compile` in `thesis/` 
+6. Run `python3 subgroupify.py` in `framework`
+7. Copy `thesis/out_C25519/` over `thesis/out`
+8. Run `make report` as you would have done normally (see above).
+
+TODO: CHECK these instructions are correct.
+
