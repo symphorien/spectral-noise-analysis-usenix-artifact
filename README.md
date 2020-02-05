@@ -7,7 +7,7 @@ Description of the folders:
 
 # Quickstart
 
-To reproduce our results for the sole NN handshake, assuming only that the Nix package manager is installed. 
+We use the Nix package manager to ensure our results are reproducible. The following instructions show how to reproduce our results for the NN handshake, assuming only that the Nix package manager is installed. 
 
 If you do not use the Nix package manager, the official NixOS VirtualBox VM Image available for download [here](https://releases.nixos.org/nixos/19.09/nixos-19.09.2008.ea553d8c67c/nixos-19.09.2008.ea553d8c67c-x86_64-linux.ova) has been tested with these instructions. You need only start the VM and download this Git repository. 
 
