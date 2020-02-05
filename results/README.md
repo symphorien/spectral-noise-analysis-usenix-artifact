@@ -2,6 +2,8 @@
 
 The tarballs in the `results` folder are a recording of the proofs we ran and what we can deduce from them.
 
+Each spthy file can be loaded into the tamarin prover and its correctness verified. If an attack is found, it can be inspected in the prover's graphical interface. Note that for results using the Curve25519 model, the patched tamarin prover should be used (`tamarin-prover-subgroup`). 
+
 The tarballs cover slightly different protocols:
 * `results/vanilla_noise.tar.bz2` is vanilla Noise with a prime order field. It is the most complete one.
 * `results/curve.tar.bz2` is Noise with curve 22519. No anonymity proofs are included. Results are identical
