@@ -17,6 +17,7 @@ token".
 * rustc and cargo 1.30
 * A suitable version of tamarin (see `tamarin/README.md`)
 * python3.6 at least to run the oracle
+
 Optional:
 * to visualize the results, graphviz
 * for runtime minimization of proof goals, python3 with tqdm, pydot, matplotlib, and networkx.
@@ -27,7 +28,9 @@ Quick way to get up and running:
 curl https://sh.rustup.rs -sSf | sh
 rustup install 1.30.0
 rustup default 1.30.0
+pushd /
 sudo tar xvf tamarin/binaries_x86_64-linux.tar.bz2
+popd
 export PATH=/nix/store/yrmgr7qra289d4zhab6jjrxg23p300i1-tamarin-prover-1.5.1b-oracle/bin:$PATH
 
 ```
