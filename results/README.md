@@ -10,6 +10,8 @@ to Noise on a prime order field.
   modification: the function `encryptAndHash` returns the plain text before the
   first DH or psk token. Only KXpsk2 has anonymity proofs.
 
+We discuss how these results were generated in the vacarme [folder](https://github.com/symphorien/spectral-noise-analysis-usenix-artifact/tree/master/vacarme). 
+
 # Interpreting the Results
 
 Each folder has the same structure:
