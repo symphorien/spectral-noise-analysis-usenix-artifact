@@ -52,7 +52,7 @@ To generate case studies corresponding to the alternative version of Noise witho
  * Delete the line `tamarin-prover-oracle`
  * Replace it with `tamarin-prover-subgroup`
 3. Run `nix-shell` in `thesis/`
-4. Copy `framework/oracle_C25519.py` over `thesis/helpers/oracle.py`
+4. Copy `thesis/helpers/oracle_C25519_K1X1.py` over `thesis/helpers/oracle.py`
 5. Run `make compile` in `thesis/` 
 6. Run `python3 subgroupify.py` in `framework`
 7. Copy `thesis/out_C25519/` over `thesis/out`
