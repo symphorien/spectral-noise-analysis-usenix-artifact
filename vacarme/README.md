@@ -23,7 +23,14 @@ Optional:
 * for runtime minimization of proof goals, python3 with tqdm, pydot, matplotlib, and networkx.
 
 Quick way to get up and running:
-* without Nix:
+
+* with Nix (recommended):
+```
+tar xvf vacarme/source.tar.bz2
+cd thesis
+nix-shell
+```
+* without Nix (not recommended):
 ```
 curl https://sh.rustup.rs -sSf | sh
 rustup install 1.30.0
@@ -34,19 +41,12 @@ popd
 export PATH=/nix/store/yrmgr7qra289d4zhab6jjrxg23p300i1-tamarin-prover-1.5.1b-oracle/bin:$PATH
 
 ```
-* with Nix:
-```
-tar xvf vacarme/source.tar.bz2
-cd thesis
-nix-shell
-```
 Dependencies will be compiled and made available inside the shell (and only inside this one).
 
 
 #### Using vacarme
 To run the tool on NN (a simple handshake which should take less than a CPU hour):
 ```
-tar xvf vacarme/source.tar.bz2
 cd thesis
 make compile
 ```
