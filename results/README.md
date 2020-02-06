@@ -17,10 +17,11 @@ We discuss how these results were generated in the vacarme [folder](https://gith
 Each folder has the same structure:
 * for each pattern x, a folder `instrument_$x` containing:
   1. Tamarin theories `name.spthy`
-  2. a proof folder with proofs, either under the form of a triplet `name.spthy`,
+  2. a proof folder with proofs, under one of two forms.
+     * either as a triplet `name.spthy`,
      `name.out`, `name.time` where the sphty can be fed to Tamarin to inspect the
      proof, `name.out` contains the summary and `name.time` gives the run time,
-     or by a set of files in the form `some hash.spthy.out` which contain,
+     * or as a set of files in the form `some hash.out.spthy.out` which contain,
      concatenated: the proved Tamarin theory, the summary, and timing
      information. In the latter case, to open the proof with Tamarin, you need to
      remove the lines before `theory XXX begin` and after `end`.
