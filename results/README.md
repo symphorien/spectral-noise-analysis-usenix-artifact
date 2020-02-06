@@ -23,7 +23,7 @@ Each folder has the same structure:
      proof, `name.out` contains the summary and `name.time` gives the run time,
      * or as a set of files in the form `some hash.out.spthy.out` which contain,
      concatenated: the proved Tamarin theory, the summary, and timing
-     information. In the latter case, to open the proof with Tamarin, you need to
+     information. In this case, to open the proof with Tamarin, you need to
      remove the lines before `theory XXX begin` and after `end`.
 * a folder `report` containing some automated analysis
   1. `table` contains the table of the strongest threat model for secrecy and
