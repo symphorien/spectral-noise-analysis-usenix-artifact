@@ -8,6 +8,14 @@ Our work uses a slightly modified version of Tamarin.
 You will find the sources of all these versions in this folder, as well as
 binaries.
 
+## Using Nix
+
+Our toolchain is complicated and we highly recommend that you use Nix to obtain it effortlessly.
+Running `nix-shell` in the `thesis` folder of the Vacarme sources will provide you with the right
+version of Tamarin. See `vacarme/README.md` for the full walkthrough.
+
+Instructions below are there only if you cannot use the Nix package manager.
+
 ## Compiling from source
 
 Tamarin is most easily built with stack. Install it first.
@@ -24,9 +32,13 @@ patch -p1 < /path/to/oracle_information.patch
 * usual `make; make install`
 
 ## Installing the binaries
-The binaries are compiled for `x86_64-linux` and need a recent enough kernel to run
-`glibc-2.27`. Unfortunately, the installation procedure requires root access.
+We provide pre-compiled binaries for your convenience. 
+They are compiled for `x86_64-linux` and need a recent enough kernel to run
+`glibc-2.27`. Unfortunately, the installation procedure requires root access. Please ensure
+that `/nix` does not exist beforehand. Instructions below will destroy the content of `/nix`.
+
 ```
+cd /
 sudo tar xvf tamarin/binaries_x86_64-linux.tar.bz2
 ```
 
@@ -40,7 +52,7 @@ tamarin-prover-subgroup is available as
 Note that the binaries are not relocatable; you may however create a symbolic
 link to them in a more convenient location.
 
-#### Uninstalling
+#### Uninstalling the binaries
 ```
 sudo rm -rf /nix
 ```
