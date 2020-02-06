@@ -77,6 +77,8 @@ To generate case studies corresponding to the alternative version of Noise witho
 
 ##### Noise with Curve25519
 
+If you have already followed the instructions for the normal Noise build of vacarme. You must exit your current nix-shell session (type `exit`).  You should delete the current `thesis/out` directory. You can also skip the first step of the following structions.. 
+
 1. Unpack the source archive as normal. 
 2. Edit `thesis/nix/shell.nix`:
  * Delete the line `tamarin-prover-oracle`
@@ -85,8 +87,6 @@ To generate case studies corresponding to the alternative version of Noise witho
 4. Copy `thesis/helpers/oracle_C25519_K1X1.py` over `thesis/helpers/oracle.py`
 5. Run `make compile` in `thesis/` 
 6. Run `python3 subgroupify.py` in `framework`
-7. Copy `thesis/out_C25519/` over `thesis/out`
-8. Run `make report` as you would have done normally (see above).
-
-TODO: CHECK these instructions are correct.
+7. Remove `thesis/out` and move `thesis/out_C25519/` to `thesis/out`
+8. Run `make report` as you would have done normally, for example `make report SAMPLE=specs/NN`
 
