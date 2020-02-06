@@ -11,6 +11,7 @@ We use the Nix package manager to ensure our results are reproducible. The follo
 
 If you do not use the Nix package manager, the official NixOS VirtualBox VM Image available for download [here](https://releases.nixos.org/nixos/19.09/nixos-19.09.2008.ea553d8c67c/nixos-19.09.2008.ea553d8c67c-x86_64-linux.ova) has been tested with these instructions. You need only start the VM and download this Git repository. 
 
+Example walkthrough to reproduce results for the pattern `NN`:
 At the root of  the repository:
 
 ```
@@ -25,4 +26,4 @@ make report SAMPLE=specs/NN
 ```
 and inspect the `out/report` folder. The format is explained in `results/README.md`.
 
-More details and alternatives, are given in the README of each folder.
+Alternatives are presented in the README of each folder.
