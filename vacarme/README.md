@@ -83,6 +83,9 @@ If you have already followed the instructions for the normal Noise build of vaca
 2. Edit `thesis/nix/shell.nix`:
  * Delete the line `tamarin-prover-oracle`
  * Replace it with `tamarin-prover-subgroup`
+3. Edit `thesis/helper/Makefile`:
+ * Delete the line `NONDIFFVARIANT=oracle`
+ * Replace it with the line `NONDIFFVARIANT=subgroup`
 3. Run `nix-shell` in `thesis/`
 4. Copy `thesis/helpers/oracle_C25519_K1X1.py` over `thesis/helpers/oracle.py`
 5. Run `make compile` in `thesis/` 
