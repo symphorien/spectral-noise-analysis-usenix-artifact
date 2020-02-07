@@ -24,7 +24,8 @@ Each folder has the same structure:
      * or as a set of files in the form `some hash.out.spthy.out` which contain,
      concatenated: the proved Tamarin theory, the summary, and timing
      information. In this case, to open the proof with Tamarin, you need to
-     remove the lines before `theory XXX begin` and after `end`.
+     remove the lines before `theory XXX begin` and after `end`. Some empty `spthy`  
+     files may exist in the same folder. You can safely ignore them.
 * a folder `report` containing some automated analysis
   1. `table` contains the table of the strongest threat model for secrecy and
      agreement claims
