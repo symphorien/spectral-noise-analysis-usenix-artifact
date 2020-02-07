@@ -86,10 +86,11 @@ If you have already followed the instructions for the normal Noise build of vaca
 3. Edit `thesis/helper/Makefile`:
  * Delete the line `NONDIFFVARIANT=oracle`
  * Replace it with the line `NONDIFFVARIANT=subgroup`
-3. Run `nix-shell` in `thesis/`
+4. Run `nix-shell` in `thesis/`
 4. Copy `thesis/helpers/oracle_C25519_K1X1.py` over `thesis/helpers/oracle.py`
 5. Run `make compile` in `thesis/` 
 6. Run `python3 subgroupify.py` in `framework`
 7. Remove `thesis/out` and move `thesis/out_C25519/` to `thesis/out`
+8. Run `find out -name "*_C25519.spthy" -execdir bash -xc 'a={}; mv $a ${a/_C25519/}' \;`
 8. Run `make report` as you would have done normally, for example `make report SAMPLE=specs/NN`
 
